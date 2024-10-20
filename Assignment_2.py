@@ -83,6 +83,12 @@ if __name__ == "__main__":
     # Training loop
     start_time = time.time()
     for epoch in range(epochs):
+        # Shuffle data
+        indices = np.arange(len(data))
+        np.random.shuffle(indices)
+        data = data[indices]
+        labels = labels[indices]
+        
         epoch_loss = 0
         for i in range(0, len(data), batch_size):
             x_batch = data[i:i + batch_size]
